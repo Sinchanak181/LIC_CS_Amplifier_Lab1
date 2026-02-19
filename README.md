@@ -166,35 +166,30 @@ The variation of output voltage with respect to input voltage is shown below.
 ![DC Transfer Curve](dc_transfer.png)
 ## TRANSIENT ANALYSIS
 
-Transient analysis was performed using a sinusoidal input signal:
-
-SINE(0.9 10m 1k)
-
-The input amplitude was kept small to observe linear amplification.
-
-### Observation
-
-- The output waveform is inverted with respect to the input.
-- A phase shift of approximately 180° was observed.
-- The amplifier operates in the linear region for small input signals.
-- For larger input amplitudes, distortion begins to appear.
-
-Transient analysis was performed using:
+Transient simulation was performed using:
 
 .tran 5m
 
-A sinusoidal input was applied:
-SINE(0.9 10m 1k)
+A sine input of SINE(0.9 10m 1k) was applied at the gate terminal.
 
-### Input Waveform
+### Input Waveform (Vin)
 
-![Vin Waveform](vin_transient.png)
+![Input Waveform](vin_transient.png)
 
-### Output Waveform
+### Output Waveform (Vout)
 
-![Vout Waveform](vout_transient.png)
+![Output Waveform](vout_transient.png)
 
 ### Observation
+
+- Output waveform is inverted with respect to input (≈ 180° phase shift).
+- Peak output voltage ≈ 780 mV
+- Peak input variation ≈ 10 mV
+- Voltage gain ≈ 2.08
+- The amplifier operates in saturation region.
+
+Thus, transient analysis confirms proper biasing and amplification.
+
 ...
 
 
@@ -221,9 +216,37 @@ was approximately 2.808
 Theoretical gain in dB ≈ 8.94 dB  
 
 Thus, practical gain is slightly lower than theoretical gain due to non-ideal effects.
-### Transient Waveform
+## AC ANALYSIS
 
-![Transient Output](transient.png)
+AC analysis was performed using:
+
+.ac dec 10 0.1 100G
+
+The frequency response was obtained to determine gain and bandwidth.
+
+### Observations
+
+- The amplifier shows constant gain in the midband region.
+- At higher frequencies, gain decreases due to parasitic capacitances.
+- The presence of load capacitor (CL = 1 pF) reduces the bandwidth.
+
+### Extracted Parameters
+
+From AC plot (with CL = 1 pF):
+
+- Midband gain ≈ 2.087
+- Gain in dB ≈ 6.39 dB
+- 3 dB bandwidth ≈ 88.43 MHz
+- Unity Gain Bandwidth (UGB) ≈ 100 MHz (approx)
+- Gain Bandwidth Product (GBP) ≈ 184.6 MHz
+### AC Response Without Load Capacitor
+
+![AC Without Load](ac_without_cl.png)
+
+### AC Response With Load Capacitor (CL = 1 pF)
+
+![AC With Load](ac_with_cl.png)
+
 
 
 
