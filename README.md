@@ -251,6 +251,42 @@ Gain Bandwidth Product (GBP) ≈ 187 MHz (approx)
 ![AC With Load](ac_with_cl.png)
 ![AC Response With Load Capacitor](AC_With_CL_Final.png)
 
+## OVERALL COMPARISON TABLE
+
+| Parameter | Theoretical Value | Practical (Simulation) Value |
+|------------|------------------|------------------------------|
+| Drain Current (ID) | ≈ 0.334 mA | ≈ 0.33 mA |
+| VDS (Q-point) | 0.75 V | ≈ 0.75 V |
+| Drain Resistor (RD) | 2.245 kΩ | 2.245 kΩ |
+| Transistor Width (W) | 1.83 µm (calculated) | 2.5 µm (adjusted) |
+| Voltage Gain (Av) | 2.808 | 2.087 |
+| Gain (dB) | 8.94 dB | 6.39 dB |
+| 3 dB Bandwidth | — | 89.65 MHz |
+| Unity Gain Bandwidth (UGB) | — | 150 MHz |
+| Gain Bandwidth Product (GBP) | — | ≈ 187 MHz |
+## INFERENCE
+
+1. The Common Source (CS) amplifier was successfully designed using 180 nm NMOS technology under the given power constraint of 0.5 mW.
+
+2. From DC analysis, the Q-point was properly fixed at  
+   **VDS ≈ 0.75 V (≈ VDD/2)**  
+   ensuring maximum symmetrical output swing.
+
+3. The calculated drain current (0.334 mA) closely matched the simulated value (≈ 0.33 mA), confirming correct bias design.
+
+4. Transient analysis verified that the amplifier provides voltage amplification with a **180° phase inversion**, which is the fundamental characteristic of a CS amplifier.
+
+5. The practical voltage gain (≈ 2.087 or 6.39 dB) was slightly lower than the theoretical gain due to non-ideal device parameters and parasitic capacitances.
+
+6. AC analysis showed a flat midband gain region followed by gain roll-off at higher frequencies.
+
+7. The 3 dB bandwidth was approximately **89.65 MHz**, and the Unity Gain Bandwidth (UGB) was around **150 MHz**.
+
+8. It was observed that adding a load capacitor (CL = 1 pF) reduced the bandwidth while maintaining nearly the same midband gain.
+
+9. Overall, the simulated results closely agree with theoretical expectations, validating the design methodology.
+
+
 
 
 
