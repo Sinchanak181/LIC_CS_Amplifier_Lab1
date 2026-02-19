@@ -249,6 +249,7 @@ Gain Bandwidth Product (GBP) ≈ 187 MHz (approx)
 ### AC Response With Load Capacitor (CL = 1 pF)
 
 ![AC With Load](ac_with_cl.png)
+
 ![AC Response With Load Capacitor](AC_With_CL_Final.png)
 
 ## OVERALL COMPARISON TABLE
