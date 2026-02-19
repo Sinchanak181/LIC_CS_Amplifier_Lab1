@@ -122,5 +122,41 @@ Thus, the Q-point was successfully fixed near mid-supply.
 ### DC Simulation Result
 
 ![DC Operating Point](dc.png)
+## DC PARAMETER VARIATION STUDY
+
+### (a) Effect of Varying RD (For Fixed W/L)
+
+The width and length of the transistor were kept constant (W = 2.5 µm, L = 180 nm).  
+The drain resistor RD was varied to observe its effect on the Q-point.
+
+Observation:
+
+- Increasing RD increases the voltage drop across RD.
+- As RD increases, VDS decreases.
+- Drain current slightly reduces for larger RD values.
+- Proper RD selection is required to maintain VDS ≈ VDD/2.
+
+Thus, RD ≈ 2.245 kΩ was selected to obtain VDS ≈ 0.75 V.
+### DC Sweep Result
+
+The DC sweep of input voltage was performed from 0 V to 1.5 V to observe variation in supply current and verify the power constraint.
+
+![DC Sweep Current](dc_sweep.png)
+
+
+---
+
+### (b) Effect of Varying W (For Fixed RD)
+
+The drain resistor was kept constant at RD ≈ 2.245 kΩ.  
+The transistor width (W) was varied to analyze its effect on drain current.
+
+Observation:
+
+- Increasing W increases drain current.
+- Larger W shifts the Q-point due to higher ID.
+- Smaller W reduces ID and moves VDS closer to VDD.
+
+From simulation tuning, W = 2.5 µm provided the required drain current (≈ 0.33 mA) and correct biasing.
 
 
