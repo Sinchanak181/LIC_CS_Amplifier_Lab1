@@ -387,19 +387,19 @@ From AC plot (with CL = 1 pF):
 
 ![AC Response With Load Capacitor](AC_With_CL_Final.png)
 
-## OVERALL COMPARISON TABLE :
+### OVERALL COMPARISON TABLE :
 
-| Parameter | Theoretical Value | Practical (Simulation) Value |
-|------------|------------------|------------------------------|
-| Drain Current (ID) | ≈ 0.334 mA | ≈ 0.33 mA |
-| VDS (Q-point) | 0.75 V | ≈ 0.75 V |
-| Drain Resistor (RD) | 2.245 kΩ | 2.245 kΩ |
-| Transistor Width (W) | 1.83 µm (calculated) | 2.5 µm (adjusted) |
-| Voltage Gain (Av) | 2.808 | 2.087 |
-| Gain (dB) | 8.94 dB | 6.39 dB |
-| 3 dB Bandwidth | — | 89.65 MHz |
-| Unity Gain Bandwidth (UGB) | — | 150 MHz |
-| Gain Bandwidth Product (GBP) | — | ≈ 187 MHz |
+| Parameter | Theoretical Value | Practical (Simulation) Value | Reason for Variation |
+|------------|------------------|-----------------------------|----------------------|
+| Drain Current (ID) | ≈ 0.334 mA | ≈ 0.33 mA | Minor rounding and model accuracy differences |
+| VDS (Q-point) | 0.75 V | ≈ 0.75 V | Slight deviation due to transistor model non-idealities |
+| Drain Resistor (RD) | 2.245 kΩ | 2.245 kΩ | Directly calculated from design equation |
+| Transistor Width (W) | 1.83 µm (calculated) | 2.5 µm (adjusted) | Width tuned in simulation to achieve exact Q-point |
+| Voltage Gain (Av) | 2.808 | 2.087 | Channel length modulation and output resistance effects |
+| Gain (dB) | 8.94 dB | 6.39 dB | Practical gain reduced due to non-ideal device behavior |
+| 3 dB Bandwidth | — | 89.65 MHz | Limited by parasitic capacitances |
+| Unity Gain Bandwidth (UGB) | — | 150 MHz | Determined by dominant pole and device capacitances |
+| Gain Bandwidth Product (GBP) | — | ≈ 187 MHz | Product of midband gain and bandwidth |
 
 ## INFERENCE :
 
