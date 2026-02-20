@@ -89,7 +89,7 @@ VGS = 0.9 V
 As VGS > Vth (0.9 V > 0.366 V),  
 the NMOS operates in saturation region.
 
-------------------------------------------------------------
+--------------------------------------------------
 
 ### Step 1: Calculate Drain Current Using Power Constraint
 
@@ -105,7 +105,7 @@ ID ≈ 3.34 × 10⁻⁴ A
 
 ID ≈ 0.334 mA  
 
-------------------------------------------------------------
+---------------------------------------------------
 
 ### Step 2: Fix Q-Point
 
@@ -117,7 +117,7 @@ VDS = 1.5 / 2
 
 VDS ≈ 0.75 V  
 
-------------------------------------------------------------
+-----------------------------------------------------
 
 ### Step 3: Calculate Drain Resistor (RD)
 
@@ -127,7 +127,7 @@ RD = (1.5 − 0.75) / (3.34 × 10⁻⁴)
 
 RD ≈ 2.245 kΩ  
 
-------------------------------------------------------------
+------------------------------------------------------
 
 ### Step 4: Calculate Oxide Capacitance (Cox)
 
@@ -147,7 +147,7 @@ Cox = (3.45 × 10⁻¹¹) / (4.1 × 10⁻⁹)
 
 Cox ≈ 8.41 × 10⁻³ F/m²  
 
-------------------------------------------------------------
+-----------------------------------------------------
 
 ### Step 5: Calculate Process Transconductance Parameter (kn')
 
@@ -164,7 +164,7 @@ kn' = 0.02738 × (8.41 × 10⁻³)
 
 kn' ≈ 2.30 × 10⁻⁴ A/V²  
 
-------------------------------------------------------------
+----------------------------------------------------
 
 ### Step 6: Calculate Required Transistor Width (W)
 
@@ -209,7 +209,7 @@ Thus, the Q-point is successfully fixed near mid-supply.
 
 ![DC Operating Point](dc.png)
 
-## DC PARAMETER VARIATION STUDY
+## DC PARAMETER VARIATION STUDY :
 
 ### (a) Effect of Varying RD (For Fixed W/L)
 
@@ -251,7 +251,7 @@ The DC sweep was performed by varying input voltage from 0 V to 1.5 V.
 The variation of output voltage with respect to input voltage is shown below.
 
 ![DC Transfer Curve](dc_transfer.png)
-## TRANSIENT ANALYSIS
+## TRANSIENT ANALYSIS :
 
 Transient simulation was performed using:
 
@@ -285,30 +285,74 @@ Thus, transient analysis confirms proper biasing and amplification.
 ...
 
 
-### Gain Calculation
+### Gain Calculation (From Transient Analysis)
 
-From transient waveform:
+From the transient waveform:
 
-Gain (Av) = Vout / Vin  
+Voltage Gain (Av) = Vout / Vin  
 
-Measured practical gain ≈ 2.087  
+Peak-to-peak values were measured from the graph.
+
+Output voltage:
+
+Vout(max) = 779.52 mV  
+Vout(min) = 739.08 mV  
+
+Vout(pp) = 779.52 − 739.08  
+Vout(pp) = 40.44 mV  
+
+Input voltage:
+
+Vin(max) = 909.56 mV  
+Vin(min) = 890.187 mV  
+
+Vin(pp) = 909.56 − 890.187  
+Vin(pp) = 19.373 mV  
+
+Therefore,
+
+Av = Vout(pp) / Vin(pp)  
+
+Av = 40.44 / 19.373  
+
+Av ≈ 2.0877  
 
 Gain in dB:
 
-Av(dB) = 20 log(2.087)  
+Av(dB) = 20 log(Av)  
 
-Av ≈ 6.39 dB  
+Av(dB) = 20 log(2.0877)  
 
-The theoretical gain using:
+Av(dB) ≈ 6.39 dB  
 
-Av = gm × RD  
 
-was approximately 2.808  
+### Theoretical Gain Calculation
 
-Theoretical gain in dB ≈ 8.94 dB  
+For a Common Source amplifier,
 
-Thus, practical gain is slightly lower than theoretical gain due to non-ideal effects.
-## AC ANALYSIS
+Av ≈ gm × RD  
+
+From DC operating point:
+
+gm ≈ 1.25 mS  
+RD = 2.245 kΩ  
+
+Therefore,
+
+Av = (1.25 × 10⁻³) × (2245)  
+
+Av ≈ 2.808  
+
+Gain in dB:
+
+Av(dB) = 20 log(2.808)  
+
+Av(dB) ≈ 8.94 dB  
+
+Thus, the practical gain (2.0877) is slightly lower than theoretical gain (2.808) due to channel length modulation and other non-ideal effects.
+
+
+## AC ANALYSIS : 
 
 AC analysis was performed using:
 
@@ -343,7 +387,7 @@ From AC plot (with CL = 1 pF):
 
 ![AC Response With Load Capacitor](AC_With_CL_Final.png)
 
-## OVERALL COMPARISON TABLE
+## OVERALL COMPARISON TABLE :
 
 | Parameter | Theoretical Value | Practical (Simulation) Value |
 |------------|------------------|------------------------------|
@@ -356,7 +400,8 @@ From AC plot (with CL = 1 pF):
 | 3 dB Bandwidth | — | 89.65 MHz |
 | Unity Gain Bandwidth (UGB) | — | 150 MHz |
 | Gain Bandwidth Product (GBP) | — | ≈ 187 MHz |
-## INFERENCE
+
+## INFERENCE :
 
 1. The Common Source (CS) amplifier was successfully designed using 180 nm NMOS technology under the given power constraint of 0.5 mW.
 
@@ -379,6 +424,4 @@ From AC plot (with CL = 1 pF):
 9. Overall, the simulated results closely agree with theoretical expectations, validating the design methodology.
 
 
-
-
-
+ 
