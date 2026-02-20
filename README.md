@@ -65,8 +65,10 @@ Therefore, the Q-point is fixed such that VDS ≈ VDD/2 to allow maximum symmetr
 5. Transient analysis (.tran 5m) was carried out using a sine input SINE(0.9 10m 1k) to observe linear and non-linear behavior.
 
 6. AC analysis (.ac dec 10 0.1 100G) was performed to obtain frequency response and determine gain and bandwidth parameters.
-   
-## DC ANALYSIS AND DESIGN CALCULATIONS
+
+----
+
+## DC ANALYSIS AND DESIGN CALCULATIONS :
 
 To design the Common Source amplifier, the Q-point was fixed at  
 VDS ≈ VDD / 2 for maximum symmetrical output swing.
@@ -89,8 +91,6 @@ VGS = 0.9 V
 As VGS > Vth (0.9 V > 0.366 V),  
 the NMOS operates in saturation region.
 
---------------------------------------------------
-
 ### Step 1: Calculate Drain Current Using Power Constraint
 
 Using:
@@ -105,8 +105,6 @@ ID ≈ 3.34 × 10⁻⁴ A
 
 ID ≈ 0.334 mA  
 
----------------------------------------------------
-
 ### Step 2: Fix Q-Point
 
 For maximum symmetrical swing:
@@ -117,8 +115,6 @@ VDS = 1.5 / 2
 
 VDS ≈ 0.75 V  
 
------------------------------------------------------
-
 ### Step 3: Calculate Drain Resistor (RD)
 
 RD = (VDD − VDS) / ID  
@@ -126,8 +122,6 @@ RD = (VDD − VDS) / ID
 RD = (1.5 − 0.75) / (3.34 × 10⁻⁴)  
 
 RD ≈ 2.245 kΩ  
-
-------------------------------------------------------
 
 ### Step 4: Calculate Oxide Capacitance (Cox)
 
@@ -147,8 +141,6 @@ Cox = (3.45 × 10⁻¹¹) / (4.1 × 10⁻⁹)
 
 Cox ≈ 8.41 × 10⁻³ F/m²  
 
------------------------------------------------------
-
 ### Step 5: Calculate Process Transconductance Parameter (kn')
 
 Convert mobility to SI units:
@@ -163,8 +155,6 @@ kn' = μn × Cox
 kn' = 0.02738 × (8.41 × 10⁻³)  
 
 kn' ≈ 2.30 × 10⁻⁴ A/V²  
-
-----------------------------------------------------
 
 ### Step 6: Calculate Required Transistor Width (W)
 
@@ -189,15 +179,12 @@ Solving,
 
 W ≈ 1.83 µm  
 
-------------------------------------------------------------
-
 After simulation tuning to obtain accurate Q-point:
 
 Final selected width:
 
 W = 2.5 µm  
 
-------------------------------------------------------------
 
 ### DC Operating Point from LTspice
 
@@ -208,6 +195,8 @@ Thus, the Q-point is successfully fixed near mid-supply.
 ### DC Simulation Result
 
 ![DC Operating Point](dc.png)
+
+-----
 
 ## DC PARAMETER VARIATION STUDY :
 
@@ -224,6 +213,7 @@ Observation:
 - Proper RD selection is required to maintain VDS ≈ VDD/2.
 
 Thus, RD ≈ 2.245 kΩ was selected to obtain VDS ≈ 0.75 V.
+
 ### DC Sweep Result
 
 The DC sweep of input voltage was performed from 0 V to 1.5 V to observe variation in supply current and verify the power constraint.
@@ -251,6 +241,9 @@ The DC sweep was performed by varying input voltage from 0 V to 1.5 V.
 The variation of output voltage with respect to input voltage is shown below.
 
 ![DC Transfer Curve](dc_transfer.png)
+
+---
+
 ## TRANSIENT ANALYSIS :
 
 Transient simulation was performed using:
@@ -284,7 +277,6 @@ Thus, transient analysis confirms proper biasing and amplification.
 
 ...
 
-
 ### Gain Calculation (From Transient Analysis)
 
 From the transient waveform:
@@ -310,11 +302,9 @@ Vin(pp) = 909.56 − 890.187
 Vin(pp) = 19.373 mV  
 
 Therefore,
-
 Av = Vout(pp) / Vin(pp)  
 
 Av = 40.44 / 19.373  
-
 Av ≈ 2.0877  
 
 Gain in dB:
@@ -322,13 +312,11 @@ Gain in dB:
 Av(dB) = 20 log(Av)  
 
 Av(dB) = 20 log(2.0877)  
-
 Av(dB) ≈ 6.39 dB  
 
 ### Theoretical Gain Calculation
 
 For a Common Source amplifier:
-
 Av = gm × RD  
 
 Where,
@@ -352,6 +340,7 @@ Av(dB) ≈ 6.39 dB
 
 Thus, the practical gain (2.0877) is slightly lower than theoretical gain (2.808) due to channel length modulation and other non-ideal effects.
 
+----
 
 ## AC ANALYSIS : 
 
@@ -388,6 +377,8 @@ From AC plot (with CL = 1 pF):
 
 ![AC Response With Load Capacitor](AC_With_CL_Final.png)
 
+----
+
 ### OVERALL COMPARISON TABLE :
 
 | Parameter | Theoretical Value | Practical (Simulation) Value | Reason for Variation |
@@ -401,6 +392,8 @@ From AC plot (with CL = 1 pF):
 | 3 dB Bandwidth | — | 89.65 MHz | Limited by parasitic capacitances |
 | Unity Gain Bandwidth (UGB) | — | 150 MHz | Determined by dominant pole and device capacitances |
 | Gain Bandwidth Product (GBP) | — | ≈ 187 MHz | Product of midband gain and bandwidth |
+
+----
 
 ## INFERENCE :
 
@@ -421,3 +414,7 @@ From AC plot (with CL = 1 pF):
 8. Adding load capacitance (1 pF) reduced bandwidth while maintaining nearly the same midband gain.
 
 9. Overall, simulation results closely agree with theoretical expectations, validating the design methodology.
+
+
+
+    
