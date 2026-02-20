@@ -66,32 +66,60 @@ Therefore, the Q-point is fixed such that VDS ≈ VDD/2 to allow maximum symmetr
 
 6. AC analysis (.ac dec 10 0.1 100G) was performed to obtain frequency response and determine gain and bandwidth parameters.
    
-## DC ANALYSIS AND CALCULATIONS
+## DC ANALYSIS AND DESIGN CALCULATIONS
 
-To fix the Q-point at VDS ≈ VDD/2, the drain current was first calculated using the power constraint.
+To design the Common Source amplifier, the Q-point was fixed at  
+VDS ≈ VDD / 2 for maximum symmetrical output swing.
 
-Given:
+The device parameters were extracted from the model file (tsmc018.lib).
 
-P ≤ 0.5 mW  
-VDD = 1.5 V  
+### Given Parameters (From tsmc018.lib)
+ 
+- Vth = 0.366 V  
+- Tox = 4.1 × 10⁻⁹ m  
+- μn (U0) = 273.80 cm²/V·s  
+- εr (SiO₂) = 3.9  
+- ε0 = 8.854 × 10⁻¹² F/m  
+- Power constraint: P ≤ 0.5 mW  
 
-Using,
+Since the input DC bias at the gate is 0.9 V,
+
+VGS = 0.9 V  
+
+As VGS > Vth (0.9 V > 0.366 V),  
+the NMOS operates in saturation region.
+
+------------------------------------------------------------
+
+### Step 1: Calculate Drain Current Using Power Constraint
+
+Using:
 
 P = V × I  
 
-0.5 mW = 1.5 × ID  
+0.5 × 10⁻³ = 1.5 × ID  
 
-Therefore,
+ID = (0.5 × 10⁻³) / 1.5  
 
-ID = 3.34 × 10⁻⁴ A  
+ID ≈ 3.34 × 10⁻⁴ A  
+
 ID ≈ 0.334 mA  
 
-For maximum symmetrical swing,
+------------------------------------------------------------
+
+### Step 2: Fix Q-Point
+
+For maximum symmetrical swing:
 
 VDS = VDD / 2  
-VDS = 1.5 / 2 = 0.75 V  
 
-The drain resistor was calculated using:
+VDS = 1.5 / 2  
+
+VDS ≈ 0.75 V  
+
+------------------------------------------------------------
+
+### Step 3: Calculate Drain Resistor (RD)
 
 RD = (VDD − VDS) / ID  
 
@@ -99,27 +127,88 @@ RD = (1.5 − 0.75) / (3.34 × 10⁻⁴)
 
 RD ≈ 2.245 kΩ  
 
-The transistor width was initially calculated using the MOSFET saturation current equation:
+------------------------------------------------------------
+
+### Step 4: Calculate Oxide Capacitance (Cox)
+
+First calculate oxide permittivity:
+
+εox = εr × ε0  
+
+εox = 3.9 × (8.854 × 10⁻¹²)  
+
+εox ≈ 3.45 × 10⁻¹¹ F/m  
+
+Now,
+
+Cox = εox / Tox  
+
+Cox = (3.45 × 10⁻¹¹) / (4.1 × 10⁻⁹)  
+
+Cox ≈ 8.41 × 10⁻³ F/m²  
+
+------------------------------------------------------------
+
+### Step 5: Calculate Process Transconductance Parameter (kn')
+
+Convert mobility to SI units:
+
+μn = 273.80 cm²/V·s  
+= 0.02738 m²/V·s  
+
+Now,
+
+kn' = μn × Cox  
+
+kn' = 0.02738 × (8.41 × 10⁻³)  
+
+kn' ≈ 2.30 × 10⁻⁴ A/V²  
+
+------------------------------------------------------------
+
+### Step 6: Calculate Required Transistor Width (W)
+
+Using MOSFET saturation equation:
 
 ID = (kn'/2) × (W/L) × (VGS − Vth)²  
 
-From calculations,
+Given:
+
+VGS = 0.9 V  
+Vth = 0.366 V  
+
+(VGS − Vth) = 0.534 V  
+
+L = 180 nm = 180 × 10⁻⁹ m  
+
+Substituting:
+
+3.34 × 10⁻⁴ = (2.30 × 10⁻⁴ / 2) × (W / 180 × 10⁻⁹) × (0.534)²  
+
+Solving,
 
 W ≈ 1.83 µm  
 
-After simulation tuning to achieve correct Q-point,
+------------------------------------------------------------
 
-Final selected W = 2.5 µm  
+After simulation tuning to obtain accurate Q-point:
 
-The obtained DC operating point from LTspice:
+Final selected width:
+
+W = 2.5 µm  
+
+------------------------------------------------------------
+
+### DC Operating Point from LTspice
 
 ID ≈ 0.33 mA  
 VDS ≈ 0.75 V  
 
-Thus, the Q-point was successfully fixed near mid-supply.
+Thus, the Q-point is successfully fixed near mid-supply.
 ### DC Simulation Result
 
 ![DC Operating Point](dc.png)
+
 ## DC PARAMETER VARIATION STUDY
 
 ### (a) Effect of Varying RD (For Fixed W/L)
