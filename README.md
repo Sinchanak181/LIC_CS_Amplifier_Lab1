@@ -317,28 +317,38 @@ Av(dB) ≈ 6.39 dB
 ### Theoretical Gain Calculation
 
 For a Common Source amplifier:
-Av = gm × RD  
 
-Where,
+Av = gm × RD  
 gm = 2ID / (VGS − Vth)
 
-Using,
-ID = 0.334 mA  
+Given:
+
+ID = 0.33 mA  
 VGS = 0.9 V  
 Vth = 0.366 V  
+RD = 2.245 kΩ  
 
-gm = (2 × 0.334 × 10⁻³) / 0.534  
-gm ≈ 1.25 mS  
+Overdrive voltage:
+
+Vov = VGS − Vth = 0.9 − 0.366 = 0.534 V  
+
+Transconductance:
+
+gm = (2 × 0.33 × 10⁻³) / 0.534  
+gm ≈ 1.236 mS  
 
 Therefore,
-Av = (1.25 × 10⁻³) × (2245)  
-Av ≈ 2.088  
+
+Av = gm × RD  
+Av = (1.236 × 10⁻³) × (2245)  
+Av ≈ 2.78  
 
 Gain in dB:
-Av(dB) = 20 log(2.088)  
-Av(dB) ≈ 6.39 dB
 
-Thus, the practical gain (2.0877) is slightly lower than theoretical gain (2.808) due to channel length modulation and other non-ideal effects.
+Av(dB) = 20 log(2.78)  
+Av(dB) ≈ 8.88 dB  
+
+The simulated gain (2.087) is lower than the theoretical value due to channel length modulation, output resistance effects, and other non-ideal device characteristics.
 
 ----
 
