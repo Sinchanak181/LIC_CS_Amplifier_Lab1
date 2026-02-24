@@ -305,7 +305,7 @@ Therefore,
 Av = Vout(pp) / Vin(pp)  
 
 Av = 40.44 / 19.373  
-Av ≈ 2.0877  
+Av ≈ 2.0877 V/V
 
 Gain in dB:
 
@@ -341,7 +341,7 @@ Therefore,
 
 Av = gm × RD  
 Av = (1.236 × 10⁻³) × (2245)  
-Av ≈ 2.78  
+Av ≈ 2.78 V/V 
 
 Gain in dB:
 
