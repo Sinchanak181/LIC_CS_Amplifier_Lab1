@@ -647,7 +647,6 @@ Av = -gm (ro || RD)
 Hence simulated gain is slightly lower than theoretical gain.
 
 ---
-
 # 🧠 Inference
 
 The diode-connected PMOS load provides stable biasing but lower voltage gain compared to current source load.
@@ -655,4 +654,231 @@ The diode-connected PMOS load provides stable biasing but lower voltage gain com
 The circuit satisfies saturation conditions and meets power constraint.
 
 Compared to Circuit 1, it offers improved bandwidth but reduced gain.
-    
+
+
+ # 🔷 Circuit 3 – Common Source Amplifier with PMOS Current Source Load
+
+---
+
+## 🎯 Aim
+
+To design and analyze a Common Source (CS) amplifier using a PMOS current source load in 180nm CMOS technology and evaluate its DC, Transient and AC performance.
+
+---
+
+## 📋 Given Specifications
+
+| Parameter | Value |
+|------------|--------|
+| VDD | 1.5 V |
+| Power Constraint | ≤ 0.5 mW |
+| Channel Length (L) | 180 nm |
+| Given VGS (NMOS) | 0.9 V |
+
+---
+
+##  Circuit Diagram
+
+(Insert LTspice schematic screenshot here)
+
+---
+
+# 📘 DC Analysis
+
+### 1️⃣ Drain Current Calculation
+
+P = VDD × ID  
+
+0.5 mW = 1.5 × ID  
+
+ID = 0.333 mA  
+
+---
+
+### 2️⃣ NMOS (M1) Design
+
+Given:
+
+VGS = 0.9 V  
+Vthn = 0.366 V  
+
+Overdrive voltage:
+
+VOVn = VGS − Vth  
+
+VOVn = 0.9 − 0.366  
+
+VOVn = 0.534 V  
+
+Using:
+
+ID = (1/2) kn' (W/L) (VOVn)²  
+
+kn' = 2.30 × 10⁻⁴ A/V²  
+L = 180 nm  
+
+Solving:
+
+Wn ≈ 1.8 µm  
+
+---
+
+### 3️⃣ PMOS (M2) – Current Source Load
+
+For PMOS current source:
+
+ID = (1/2) kp' (Wp/L) (VOVp)²  
+
+Assuming same current:
+
+VOVp ≈ VOVn = 0.534 V  
+
+kp' = 9.73 × 10⁻⁵ A/V²  
+
+Substituting:
+
+0.333 × 10⁻³  
+= (1/2)(9.73 × 10⁻⁵)(Wp / 180×10⁻⁹)(0.534)²  
+
+Solving:
+
+Wp ≈ 4.3 µm  
+
+---
+
+### 4️⃣ Bias Voltage for PMOS (VB)
+
+For PMOS:
+
+VSG = VOVp + |Vthp|  
+
+VSG = 0.534 + 0.39  
+
+VSG ≈ 0.924 V  
+
+Since:
+
+VSG = VDD − VB  
+
+VB = VDD − VSG  
+
+VB = 1.5 − 0.924  
+
+VB ≈ 0.576 V  
+
+---
+
+### 5️⃣ Output Voltage
+
+For current source load, output ideally biases near mid-supply.
+
+Approximate:
+
+Vout ≈ 0.8 – 1.0 V  
+
+(Actual value obtained from LTspice DC simulation)
+
+---
+
+### 6️⃣ Saturation Validation
+
+For NMOS:
+
+VGS > Vth  
+0.9 V > 0.366 V ✅  
+
+VDS ≥ VOVn  
+
+For PMOS:
+
+VSG > |Vthp|  
+0.924 V > 0.39 V ✅  
+
+Hence both transistors operate in saturation region.
+
+---
+
+### 7️⃣ Width Tuning (Simulation Based)
+
+Initial:
+
+Wn = 1.8 µm  
+Wp = 4.3 µm  
+
+After DC tuning:
+
+Wn(tuned) = ______ µm  
+Wp(tuned) = ______ µm  
+
+ID = ______ mA  
+Vout = ______ V  
+
+---
+
+# 📊 Transient Analysis
+
+(Insert transient waveform screenshot)
+
+Gain:
+
+Av = Vout(pp) / Vin(pp)
+
+Av = ______ V/V  
+
+Output shows 180° phase shift.
+
+---
+
+# 📈 AC Analysis
+
+(Insert AC plot screenshot)
+
+Midband Gain = ______ dB  
+3 dB Bandwidth = ______ Hz  
+
+Gain Bandwidth Product:
+
+GBP = Av × BW  
+
+GBP = ______
+
+---
+
+# 🔎 Comparison with Circuit 2
+
+| Parameter | Circuit 2 (Diode Load) | Circuit 3 (Current Source Load) |
+|------------|------------------------|----------------------------------|
+| Gain | Lower | Higher |
+| Output Resistance | Low | High |
+| Bandwidth | Higher | Lower |
+| Output Swing | Limited | Improved |
+
+Reason:
+
+• Current source load provides high output resistance.  
+• Higher output resistance increases voltage gain.  
+• Due to gain–bandwidth tradeoff, bandwidth reduces.  
+
+---
+
+# 📌 Effect of Channel Length Modulation (CLM)
+
+Due to channel length modulation, drain current increases slightly with VDS.
+
+This introduces finite output resistance (ro), reducing practical gain.
+
+Actual gain:
+
+Av = -gm (ro_n || ro_p)
+
+Hence simulated gain is slightly lower than ideal theoretical gain.
+
+---
+
+# 🧠 Inference
+
+The PMOS current source load provides higher gain compared to diode-connected load due to increased output resistance.
+
+The circuit satisfies saturation conditions and power constraint.
+
+It achieves better amplification but slightly reduced bandwidth compared to diode load configuration.   
