@@ -622,25 +622,7 @@ Midband Gain = -1 dB
 Gain Bandwidth Product:
 GBP = Av × BW  
 
-GBP = 21.369 Hz
-
----
-
-#  Comparison with Circuit 1
-
-| Parameter | Circuit 1 (Current Source Load) | Circuit 2 (Diode Load) |
-|------------|----------------------------------|--------------------------|
-| Gain | Higher | Lower |
-| Output Resistance | High | Low |
-| Bandwidth | Lower | Higher |
-| Output Swing | Better | Limited |
-
-Reason:
-
-• Diode-connected PMOS behaves like a resistive load.  
-• Output resistance reduces.  
-• Voltage gain decreases.  
-• Due to gain–bandwidth tradeoff, bandwidth improves.
+GBP = 21.369 GHz
 
 ---
 
@@ -791,11 +773,11 @@ Wp = 19.7 µm
 
 After DC tuning:
 
-Wn(tuned) =  µm  
-Wp(tuned) =  µm  
+Wn(tuned) = 23.24  µm  
+Wp(tuned) = 55.16  µm  
 
-ID = ______ mA  
-Vout = ______ V
+ID = 0.337 mA  
+Vout = 0.22 V
 
 ![CS Amplifier Circuit](dccircuitc.png)
 
@@ -811,41 +793,25 @@ Gain:
 
 Av = Vout(pp) / Vin(pp)
 
-Av = ______ V/V  
+Av = 0.055 V/V  
+Av = -25.08 dB
 
 Output shows 180° phase shift.
 
 ---
 
-# 📈 AC Analysis
+#  AC Analysis
 
 ![CS Amplifier Circuit](accircuitc.png)
 
-Midband Gain = ______ dB  
-3 dB Bandwidth = ______ Hz  
+Midband Gain = -25.08 dB  
+3 dB Bandwidth = 3.86 GHz  
 
 Gain Bandwidth Product:
 
 GBP = Av × BW  
 
-GBP = ______
-
----
-
-#  Comparison with Circuit 2
-
-| Parameter | Circuit 2 (Diode Load) | Circuit 3 (Current Source Load) |
-|------------|------------------------|----------------------------------|
-| Gain | Lower | Higher |
-| Output Resistance | Low | High |
-| Bandwidth | Higher | Lower |
-| Output Swing | Limited | Improved |
-
-Reason:
-
-• Current source load provides high output resistance.  
-• Higher output resistance increases voltage gain.  
-• Due to gain–bandwidth tradeoff, bandwidth reduces.  
+GBP = 0.212 GHz
 
 ---
 
@@ -869,4 +835,35 @@ The PMOS current source load provides higher gain compared to diode-connected lo
 
 The circuit satisfies saturation conditions and power constraint.
 
-It achieves better amplification but slightly reduced bandwidth compared to diode load configuration.   
+It achieves better amplification but slightly reduced bandwidth compared to diode load configuration.
+
+#  Comprehensive Comparison of Three Circuits – Experiment 1
+
+##  Performance and Design Comparison
+
+| Parameter | Circuit 1 <br> (Current Source + RS) | Circuit 2 <br> (Diode Load) | Circuit 3 <br> (PMOS Current Source) |
+|------------|----------------------------------------|--------------------------------|----------------------------------------|
+| VDD | 1.5 V | 1.5 V | 1.5 V |
+| ID | 0.333 mA | 0.333 mA | 0.333 mA |
+| VGS (NMOS) | 0.9 V | 0.9 V | 0.616 V (Redesigned) |
+| Wn | 1.8 µm | 1.8 µm | 8.3 µm |
+| Wp | 4.3 µm | 4.3 µm | 19.7 µm |
+| Vout (DC) | ~0.95 V | ~0.58 V | ~0.25 V |
+| Gain (dB) | 6.39 dB | -1 dB | -25.08 dB |
+| Gain (Linear) | 2.087 | 0.89 | 0.056 |
+| 3 dB Bandwidth | 89.65 MHz | 23.85 GHz | 3.86 GHz |
+| Gain Bandwidth Product | 0.187 GHz | 21.2 GHz | 0.216 GHz |
+| Output Resistance | High | Low | Moderate |
+| Saturation Region | Yes | Yes | Yes (Redesigned) |
+| Output Swing | Good | Limited | Very Limited |
+| Design Stability | Stable | Simple | Bias Sensitive |
+
+---
+
+##  Observations
+
+• Circuit 1 provides the highest voltage gain with moderate bandwidth.  
+• Circuit 2 offers extremely high bandwidth but very low gain due to low output resistance.  
+• Circuit 3 requires larger transistor sizing and careful biasing to maintain saturation.  
+• Larger transistor widths increase parasitic capacitances, affecting frequency response.  
+• The comparison clearly demonstrates gain–bandwidth tradeoff in CMOS amplifiers.
