@@ -436,7 +436,7 @@ To design and analyze a Common Source (CS) amplifier using a diode-connected PMO
 
 ---
 
-## 📋 Given Specifications
+##  Given Specifications
 
 | Parameter | Value |
 |------------|--------|
@@ -447,7 +447,7 @@ To design and analyze a Common Source (CS) amplifier using a diode-connected PMO
 
 ---
 
-## 🔌 Circuit Diagram
+##  Circuit Diagram
 
 ![CS Amplifier Circuit](circuitb.png)
 ---
@@ -588,7 +588,11 @@ Hence both transistors operate in saturation region.
 
 # Transient Analysis
 
+INPUT WAVEFORM
+
 ![CS Amplifier Circuit](tacircuitb1.png)
+
+OUTPUT WAVEFORM
 
 ![CS Amplifier Circuit](tacircuitb2.png)
 
@@ -679,7 +683,7 @@ To design and analyze a Common Source (CS) amplifier using a PMOS current source
 | VDD | 1.5 V |
 | Power Constraint | ≤ 0.5 mW |
 | Channel Length (L) | 180 nm |
-| Given VGS (NMOS) | 0.9 V |
+|  Assumed Overdrive Voltage (VOV) | 0.25 V |
 
 ---
 
@@ -701,125 +705,107 @@ ID = 0.333 mA
 
 ---
 
-###  NMOS (M1) Design
+###  NMOS (M1)
 
-Given:
+Assume overdrive voltage:
 
-VGS = 0.9 V  
-Vthn = 0.366 V  
+VOV = 0.25 V  
 
-Overdrive voltage:
+VGS = VOV + Vth  
 
-VOVn = VGS − Vth  
+VGS = 0.25 + 0.366  
 
-VOVn = 0.9 − 0.366  
+VGS = 0.616 V  
 
-VOVn = 0.534 V  
+Drain current equation:
 
-Using:
+ID = (1/2) × kn' × (W/L) × (VOV)²  
 
-ID = (1/2) kn' (W/L) (VOVn)²  
+Substituting values and solving:
 
-kn' = 2.30 × 10⁻⁴ A/V²  
-L = 180 nm  
-
-Solving:
-
-Wn ≈ 1.8 µm  
+Wn ≈ 8.3 µm  
 
 ---
 
-###  PMOS (M2) – Current Source Load
+###  PMOS (M2)
 
-For PMOS current source:
+ID = (1/2) × kp' × (W/L) × (VOV)²  
 
-ID = (1/2) kp' (Wp/L) (VOVp)²  
+Solving similarly:
 
-Assuming same current:
-
-VOVp ≈ VOVn = 0.534 V  
-
-kp' = 9.73 × 10⁻⁵ A/V²  
-
-Substituting:
-
-0.333 × 10⁻³  
-= (1/2)(9.73 × 10⁻⁵)(Wp / 180×10⁻⁹)(0.534)²  
-
-Solving:
-
-Wp ≈ 4.3 µm  
+Wp ≈ 19.7 µm  
 
 ---
 
-###  Bias Voltage for PMOS (VB)
+###  Bias Voltage (VB)
 
-For PMOS:
+VSG = VOV + |Vthp|  
 
-VSG = VOVp + |Vthp|  
+VSG = 0.25 + 0.39  
 
-VSG = 0.534 + 0.39  
-
-VSG ≈ 0.924 V  
-
-Since:
-
-VSG = VDD − VB  
+VSG = 0.64 V  
 
 VB = VDD − VSG  
 
-VB = 1.5 − 0.924  
+VB = 1.5 − 0.64  
 
-VB ≈ 0.576 V  
+VB = 0.86 V  
 
 ---
 
 ###  Output Voltage
 
-For current source load, output ideally biases near mid-supply.
-Approximate: 
+For NMOS saturation:
 
-Vout ≈ 0.8 to 1.0 V  
+VDS = VOV  
+
+Since source is grounded:
+
+Vout = 0.25 V  
+
 ---
 
-###  Saturation Validation
+###  Saturation Check
 
 For NMOS:
 
-VGS > Vth  
-0.9 V > 0.366 V ✅  
+VDS = 0.25 V  
+VOV = 0.25 V  
 
-VDS ≥ VOVn  
+Condition satisfied → NMOS in saturation  
 
 For PMOS:
 
-VSG > |Vthp|  
-0.924 V > 0.39 V ✅  
+VSD = 1.5 − 0.25 = 1.25 V  
+VSD > VOV  
 
+Condition satisfied → PMOS in saturation  
 Hence both transistors operate in saturation region.
-
----
 
 ###  Width Tuning (Simulation Based)
 
 Initial:
 
-Wn = 1.8 µm  
-Wp = 4.3 µm  
+Wn = 8.6 µm  
+Wp = 19.7 µm  
 
 After DC tuning:
 
-Wn(tuned) = 4.5 µm  
-Wp(tuned) = 10.75 µm  
+Wn(tuned) =  µm  
+Wp(tuned) =  µm  
 
 ID = ______ mA  
-Vout = ______ V  
+Vout = ______ V
+
+![CS Amplifier Circuit](dccircuitc.png)
 
 ---
 
-# 📊 Transient Analysis
+#  Transient Analysis
 
-(Insert transient waveform screenshot)
+![CS Amplifier Circuit](tacircuitc1.png)
+
+![CS Amplifier Circuit](tacircuitc2.png)
 
 Gain:
 
@@ -833,7 +819,7 @@ Output shows 180° phase shift.
 
 # 📈 AC Analysis
 
-(Insert AC plot screenshot)
+![CS Amplifier Circuit](accircuitc.png)
 
 Midband Gain = ______ dB  
 3 dB Bandwidth = ______ Hz  
@@ -846,7 +832,7 @@ GBP = ______
 
 ---
 
-# 🔎 Comparison with Circuit 2
+#  Comparison with Circuit 2
 
 | Parameter | Circuit 2 (Diode Load) | Circuit 3 (Current Source Load) |
 |------------|------------------------|----------------------------------|
@@ -863,7 +849,7 @@ Reason:
 
 ---
 
-# 📌 Effect of Channel Length Modulation (CLM)
+# Effect of Channel Length Modulation (CLM)
 
 Due to channel length modulation, drain current increases slightly with VDS.
 
@@ -877,7 +863,7 @@ Hence simulated gain is slightly lower than ideal theoretical gain.
 
 ---
 
-# 🧠 Inference
+#  Inference
 
 The PMOS current source load provides higher gain compared to diode-connected load due to increased output resistance.
 
