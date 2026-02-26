@@ -1,4 +1,4 @@
-# Experiment – 1  
+ # Experiment – 1  
 ## DC, Transient and AC Analysis of Common Source Amplifier using 180nm NMOS in LTspice
 
 ---
@@ -426,11 +426,11 @@ From AC plot (with CL = 1 pF):
 9. Overall, simulation results closely agree with theoretical expectations, validating the design methodology.
 
 
-# 🔷 Circuit 2 – Common Source Amplifier with Diode-Connected PMOS Load
+#  Circuit 2 – Common Source Amplifier with Diode-Connected PMOS Load
 
 ---
 
-## 🎯 Aim
+## Aim
 
 To design and analyze a Common Source (CS) amplifier using a diode-connected PMOS load in 180nm CMOS technology and evaluate its DC, Transient and AC performance.
 
@@ -449,13 +449,12 @@ To design and analyze a Common Source (CS) amplifier using a diode-connected PMO
 
 ## 🔌 Circuit Diagram
 
-(Insert LTspice schematic screenshot here)
-
+![CS Amplifier Circuit](circuitb.png)
 ---
 
-# 📘 DC Analysis
+# DC Analysis
 
-### 1️⃣ Drain Current Calculation
+### Drain Current Calculation
 
 Power constraint:
 
@@ -467,7 +466,7 @@ ID = 0.333 mA
 
 ---
 
-### 2️⃣ NMOS (M1) Design
+### NMOS (M1) Design
 
 Given:
 
@@ -495,7 +494,7 @@ Wn ≈ 1.8 µm
 
 ---
 
-### 3️⃣ PMOS (M2) – Diode Connected Load
+### PMOS (M2) – Diode Connected Load
 
 For PMOS:
 
@@ -526,7 +525,7 @@ Solving:
 
 Wp ≈ 4.3 µm
 
-### 4️⃣ Output Voltage Calculation
+### Output Voltage Calculation
 
 For diode-connected PMOS:
 
@@ -546,7 +545,7 @@ Vout ≈ 0.58 V
 
 ---
 
-### 4️⃣ DC Width Tuning (Based on Simulation)
+### DC Width Tuning (Based on Simulation)
 
 Initial calculated widths:
 
@@ -557,17 +556,19 @@ After running DC operating point analysis in LTspice, the output voltage was adj
 
 Final tuned widths:
 
-Wn(tuned) = ______ µm  
-Wp(tuned) = ______ µm  
+Wn(tuned) = 2.88 µm  
+Wp(tuned) = 6.88 µm  
 
 For these tuned values:
 
-ID = ______ mA  
-Vout = ______ V  
+ID = 0.333 mA  
+Vout = 0.54 V  
 
 The tuning was required because practical device behavior (including channel length modulation and model parameters from tsmc018.lib) slightly shifts the DC operating point from theoretical calculation.
 
-### 5️⃣ Saturation Condition Validation
+![CS Amplifier Circuit](dccircuitb.png)
+
+###  Saturation Condition Validation
 
 For NMOS:
 
@@ -585,38 +586,43 @@ Hence both transistors operate in saturation region.
 
 ---
 
-# 📊 Transient Analysis
+# Transient Analysis
 
-(Insert transient waveform screenshot here)
+![CS Amplifier Circuit](tacircuitb1.png)
+
+![CS Amplifier Circuit](tacircuitb2.png)
 
 Small signal gain:
 
 Av = Vout(pp) / Vin(pp)
+Av = 17.84m / 19.9m
 
-Av = ______ V/V  
+Av = 0.896 V/V 
+
+In dB:
+Av = -0.94 dB  
 
 Output waveform is inverted (180° phase shift), confirming common source operation.
 
 ---
 
-# 📈 AC Analysis
+# AC Analysis
 
-(Insert AC Bode plot screenshot here)
+![CS Amplifier Circuit](accircuitb.png)
 
 From Bode plot:
 
-Midband Gain = ______ dB  
-3 dB Bandwidth = ______ Hz  
+Midband Gain = -1 dB  
+3 dB Bandwidth = 23.85 GHz  
 
 Gain Bandwidth Product:
-
 GBP = Av × BW  
 
-GBP = ______
+GBP = 21.369 Hz
 
 ---
 
-# 🔎 Comparison with Circuit 1
+#  Comparison with Circuit 1
 
 | Parameter | Circuit 1 (Current Source Load) | Circuit 2 (Diode Load) |
 |------------|----------------------------------|--------------------------|
@@ -634,7 +640,7 @@ Reason:
 
 ---
 
-# 📌 Effect of Channel Length Modulation (CLM)
+# Effect of Channel Length Modulation (CLM)
 
 In practical MOSFETs, drain current slightly increases with VDS due to channel length modulation.
 
@@ -647,7 +653,7 @@ Av = -gm (ro || RD)
 Hence simulated gain is slightly lower than theoretical gain.
 
 ---
-# 🧠 Inference
+#  Inference
 
 The diode-connected PMOS load provides stable biasing but lower voltage gain compared to current source load.
 
@@ -656,17 +662,17 @@ The circuit satisfies saturation conditions and meets power constraint.
 Compared to Circuit 1, it offers improved bandwidth but reduced gain.
 
 
- # 🔷 Circuit 3 – Common Source Amplifier with PMOS Current Source Load
+ #  Circuit 3 – Common Source Amplifier with PMOS Current Source Load
 
 ---
 
-## 🎯 Aim
+##  Aim
 
 To design and analyze a Common Source (CS) amplifier using a PMOS current source load in 180nm CMOS technology and evaluate its DC, Transient and AC performance.
 
 ---
 
-## 📋 Given Specifications
+##  Given Specifications
 
 | Parameter | Value |
 |------------|--------|
@@ -679,13 +685,13 @@ To design and analyze a Common Source (CS) amplifier using a PMOS current source
 
 ##  Circuit Diagram
 
-(Insert LTspice schematic screenshot here)
+![CS Amplifier Circuit](circuitc.png)
 
 ---
 
-# 📘 DC Analysis
+#  DC Analysis
 
-### 1️⃣ Drain Current Calculation
+###  Drain Current Calculation
 
 P = VDD × ID  
 
@@ -695,7 +701,7 @@ ID = 0.333 mA
 
 ---
 
-### 2️⃣ NMOS (M1) Design
+###  NMOS (M1) Design
 
 Given:
 
@@ -723,7 +729,7 @@ Wn ≈ 1.8 µm
 
 ---
 
-### 3️⃣ PMOS (M2) – Current Source Load
+###  PMOS (M2) – Current Source Load
 
 For PMOS current source:
 
@@ -746,7 +752,7 @@ Wp ≈ 4.3 µm
 
 ---
 
-### 4️⃣ Bias Voltage for PMOS (VB)
+###  Bias Voltage for PMOS (VB)
 
 For PMOS:
 
@@ -768,19 +774,15 @@ VB ≈ 0.576 V
 
 ---
 
-### 5️⃣ Output Voltage
+###  Output Voltage
 
 For current source load, output ideally biases near mid-supply.
+Approximate: 
 
-Approximate:
-
-Vout ≈ 0.8 – 1.0 V  
-
-(Actual value obtained from LTspice DC simulation)
-
+Vout ≈ 0.8 to 1.0 V  
 ---
 
-### 6️⃣ Saturation Validation
+###  Saturation Validation
 
 For NMOS:
 
@@ -798,7 +800,7 @@ Hence both transistors operate in saturation region.
 
 ---
 
-### 7️⃣ Width Tuning (Simulation Based)
+###  Width Tuning (Simulation Based)
 
 Initial:
 
@@ -807,8 +809,8 @@ Wp = 4.3 µm
 
 After DC tuning:
 
-Wn(tuned) = ______ µm  
-Wp(tuned) = ______ µm  
+Wn(tuned) = 4.5 µm  
+Wp(tuned) = 10.75 µm  
 
 ID = ______ mA  
 Vout = ______ V  
