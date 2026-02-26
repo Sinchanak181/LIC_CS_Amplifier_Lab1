@@ -785,9 +785,13 @@ Vout = 0.22 V
 
 #  Transient Analysis
 
-![CS Amplifier Circuit](tacircuitc1.png)
+INPUT WAVEFORM 
 
-![CS Amplifier Circuit](tacircuitc2.png)
+![CS Amplifier Circuit](tbcircuitc1.png)
+
+OUTPUT WAVEFORM 
+
+![CS Amplifier Circuit](tbcircuitc2.png)
 
 Gain:
 
