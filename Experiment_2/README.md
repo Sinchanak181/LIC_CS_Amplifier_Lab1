@@ -288,7 +288,7 @@ GBP ≈ 2.13 GHz
 
 ## 🔷 Circuit Schematic
 
-![Circuit 2 Schematic](circuit2.png)
+![Circuit 2](https://raw.githubusercontent.com/Sinchanak181/LIC_Amplifier_Configurations_Exp2/main/circuit2.png)
 
 ##  Design Specifications
 
