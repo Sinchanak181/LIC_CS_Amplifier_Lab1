@@ -19,8 +19,7 @@ To design and analyze a Common Source (CS) amplifier with PMOS active load using
 ## Common Source Amplifier with PMOS Active Load
 ### Circuit Diagram
 
-![Circuit1
-(https://raw.githubusercontent.com/Sinchanak181/LIC_Amplifier_Configurations_Exp2/main/Circuit1_Schematic.png)
+![Circuit2](https://raw.githubusercontent.com/Sinchanak181/LIC_Amplifier_Configurations_Exp2/main/circuit2.png)
 
 
 ### Circuit Description
@@ -105,8 +104,9 @@ RS ≈ 598.8 Ω
 | RS | 598.8 Ω |
 
 The above calculations ensure proper DC biasing and saturation region operation.
-## DC Simulation Results
-![Circuit1_DC](https://raw.githubusercontent.com/Sinchanak181/LIC_Amplifier_Configurations_Exp2/main/Circuit1_DC_OperatingPoint.png)
+## DC Simulation Result
+
+![Circuit2_DC](https://raw.githubusercontent.com/Sinchanak181/LIC_Amplifier_Configurations_Exp2/main/circuit2_dc.png)
 
 ### Observations
 - ID(M1) ≈ 0.335 mA  
