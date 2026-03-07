@@ -1,5 +1,10 @@
 # Linear Integrated Circuits Laboratory
 
+![LTspice](https://img.shields.io/badge/Simulation-LTspice-blue)
+![Technology](https://img.shields.io/badge/Technology-TSMC%20180nm-green)
+![Course](https://img.shields.io/badge/Course-LIC%20Lab-orange)
+![Platform](https://img.shields.io/badge/Platform-GitHub-black)
+
 ## Student Details
 
 **Name:** Sinchana K   
