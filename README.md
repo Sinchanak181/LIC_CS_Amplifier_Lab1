@@ -38,3 +38,5 @@
 
 This repository contains the simulation and analysis of various amplifier configurations performed as part of the **Linear Integrated Circuits Laboratory**.  
 All circuits are designed and analyzed using **LTspice** based on **180 nm CMOS technology**.
+
+
