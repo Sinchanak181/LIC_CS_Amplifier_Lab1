@@ -49,7 +49,7 @@ To study and determine the following parameters of IC 741 operational amplifier:
   - Multiplication
   - Integration
 
-![Op amp Symbol Setup](op_amp_symbol.png.jpg.png)
+![Op Amp Symbol](https://raw.githubusercontent.com/Sinchanak181/Virtual-Lab---Experiment-3/main/op_amp_symbol.png.jpg.png)
 
 - Because of this function, it is called an "operational" amplifier and is abbreviated as Op-Amp.
 
@@ -63,7 +63,7 @@ To study and determine the following parameters of IC 741 operational amplifier:
 
 ## 🔷 Internal Functional Blocks of Op-Amp
 
-![Block Diagram Setup](block_diagram.png.jpg.png)
+![Block Diagram](https://raw.githubusercontent.com/Sinchanak181/Virtual-Lab---Experiment-3/main/block_diagram.png.jpg.png)
 
 1️⃣ **Input Stage**  
 - It is a differential amplifier.  
@@ -125,7 +125,7 @@ The pin configuration of IC 741 general purpose operational amplifier is shown i
 
 ### 📌 Pin Description
 
-![Block Diagram Setup](pin.png)
+![Pin Diagram](https://raw.githubusercontent.com/Sinchanak181/Virtual-Lab---Experiment-3/main/pin.png)
 
 - **Pin 1 and Pin 5 – Offset Null Pins**
   - Used for offset voltage adjustment.
@@ -157,7 +157,8 @@ The pin configuration of IC 741 general purpose operational amplifier is shown i
 
 ## a) Measurement of Inverting Bias Current (IB₁)
 
-![Inverting Bias Current Setup](inverting_bias_current_pro.png)
+![Inverting Bias Current](https://raw.githubusercontent.com/Sinchanak181/Virtual-Lab---Experiment-3/main/inverting_bias_current_pro.png)
+
 ### Step 1:
 Click on the **Components** button and place all required components on the table.
 ### Step 2:
@@ -175,13 +176,14 @@ Click on **"Reset"** and proceed to measure the inverting bias current.
 
 ### 🔽 Circuit Screenshot
 
-![Inverting Bias Current Setup](inverting_bias_current.png.jpg)
+![Inverting Bias Current](https://raw.githubusercontent.com/Sinchanak181/Virtual-Lab---Experiment-3/main/inverting_bias_current.png.jpg)
 
 ---
 
 ## b) Measurement of Non-Inverting Bias Current (IB₂)
 
-![NonInverting Bias Current Setup](noninverting_bias_current_pro.png)
+![Non Inverting Bias Current](https://raw.githubusercontent.com/Sinchanak181/Virtual-Lab---Experiment-3/main/noninverting_bias_current_pro.png)
+
 ### Step 1:
 Click on the **Components** button and place the required components.
 ### Step 2:
@@ -197,12 +199,12 @@ Click on **"Result"** and enter the calculated value.
 
 ### 🔽 Circuit Screenshot
 
-![Inverting Bias Current Setup](non_inverting_bias_current.png.jpg)
+![Non Inverting Bias Current](https://raw.githubusercontent.com/Sinchanak181/Virtual-Lab---Experiment-3/main/non_inverting_bias_current.png.jpg)
 
 ---
 # B. Measurement of Input Offset Current (Iio)
 
-![Input Offset Current Setup](input_offset_current_pro.png.jpg)
+![Input Offset Current](https://raw.githubusercontent.com/Sinchanak181/Virtual-Lab---Experiment-3/main/input_offset_current_pro.png.jpg)
 ### Step 1:
 Click on the **Components** button and place the components on the table.
 ### Step 2:
@@ -217,13 +219,14 @@ Iio = Vo / Rf
 Click on **"Result"** and enter the calculated value.
 ### 🔽 Circuit Screenshot
 
-![Input Offset Current Setup](input_offset_current.png.jpg)
+![Input Offset Current](https://raw.githubusercontent.com/Sinchanak181/Virtual-Lab---Experiment-3/main/input_offset_current.png.jpg)
 
 ---
 
 # C. Measurement of Input Offset Voltage (Vio)
 
-![Input Offset Voltage Setup](input_offset_voltage_pro.png.jpg)
+![Input Offset Voltage](https://raw.githubusercontent.com/Sinchanak181/Virtual-Lab---Experiment-3/main/input_offset_voltage_pro.png.jpg)
+
 ### Step 1:
 Click on the **Components** button and place all required components on the table.
 ### Step 2:
@@ -238,7 +241,7 @@ Vio = (Vo − IioRf) / (1 + Rf/Ri)
 Click on **"Result"** and enter the calculated value.
 ### 🔽 Circuit Screenshot
 
-![Input Offset Voltage Setup](input_offset_voltage.png.jpg)
+![Input Offset Voltage](https://raw.githubusercontent.com/Sinchanak181/Virtual-Lab---Experiment-3/main/input_offset_voltage.png.jpg)
 
 ---
 
@@ -270,9 +273,9 @@ Vm = 3V (Amplitude of input signal)
 Click on **"Result"** and enter the calculated value.
 ### 🔽 Circuit Screenshot
 
-![Slew Rate Setup](slew_rate.png.jpg)
+![Slew Rate](https://raw.githubusercontent.com/Sinchanak181/Virtual-Lab---Experiment-3/main/slew_rate.png.jpg)
 
-![Slew Rate Setup](slew_rate1.png.jpg)
+![Slew Rate](https://raw.githubusercontent.com/Sinchanak181/Virtual-Lab---Experiment-3/main/slew_rate1.png.jpg)
 
 ---
 
@@ -333,4 +336,3 @@ Hence, the characteristics and parameters of IC 741 were successfully studied an
 - V.K. Mehta & Rohit Mehta, *Principles of Electronics*, S. Chand.
 - David A. Bell, *Operational Amplifiers and Linear ICs*, Oxford University Press.
 - Virtual Labs – Analog and Digital Electronics II, IIT.
-
