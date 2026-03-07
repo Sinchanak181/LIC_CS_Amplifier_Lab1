@@ -36,7 +36,7 @@ The drain resistor RD is connected between VDD and drain terminal.
 The input signal is applied at the gate terminal and output is taken from the drain.  
 
 
-![CS Amplifier Circuit](../circuit.png)
+![CS Amplifier Circuit](circuit.png)
 
 ---
 
