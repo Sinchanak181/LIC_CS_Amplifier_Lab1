@@ -36,7 +36,7 @@ The drain resistor RD is connected between VDD and drain terminal.
 The input signal is applied at the gate terminal and output is taken from the drain.  
 
 
-![CS Amplifier Circuit](circuit.png)
+![CS Amplifier Circuit](../circuit.png)
 
 ---
 
@@ -194,7 +194,7 @@ VDS ≈ 0.75 V
 Thus, the Q-point is successfully fixed near mid-supply.
 ### DC Simulation Result
 
-![DC Operating Point](dc.png)
+![DC Operating Point](../dc.png)
 
 -----
 
@@ -218,7 +218,7 @@ Thus, RD ≈ 2.245 kΩ was selected to obtain VDS ≈ 0.75 V.
 
 The DC sweep of input voltage was performed from 0 V to 1.5 V to observe variation in supply current and verify the power constraint.
 
-![DC Sweep Current](dc_sweep.png)
+![DC Sweep Current](../dc_sweep.png)
 
 
 ---
@@ -240,7 +240,7 @@ From simulation tuning, W = 2.5 µm provided the required drain current (≈ 0.3
 The DC sweep was performed by varying input voltage from 0 V to 1.5 V.  
 The variation of output voltage with respect to input voltage is shown below.
 
-![DC Transfer Curve](dc_transfer.png)
+![DC Transfer Curve](../dc_transfer.png)
 
 ---
 
@@ -254,15 +254,15 @@ A sine input of SINE(0.9 10m 1k) was applied at the gate terminal.
 
 ### Input Waveform (Vin)
 
-![Input Waveform](vin_transient.png)
+![Input Waveform](../vin_transient.png)
 
 ### Output Waveform (Vout)
 
-![Output Waveform](vout_transient.png)
+![Output Waveform](../vout_transient.png)
 
 ### Combined Input and Output Waveforms
 
-![Transient Combined Vin and Vout](Transient_Vin_Vout.png)
+![Transient Combined Vin and Vout](../Transient_Vin_Vout.png)
 
 
 ### Observation
