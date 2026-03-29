@@ -1395,7 +1395,7 @@ Amplifier operates in linear region
 
 #### Case 2: Large Signal (Non-Linear Region)
 
-![Transient Nonlinear](your_nonlinear_image.png.jpeg3)
+![Transient Nonlinear](your_nonlinear_image.png.jpeg3.png)
 
 Input:
 Vid ≈ 400 mV  
@@ -1469,7 +1469,7 @@ Simulated gain < theoretical gain
 ---
 
 ### AC Analysis
-![AC Response](your_ac_plot.png3)
+![AC Response](your_ac_plot.png3.png)
 
 #### Input Conditions
 
