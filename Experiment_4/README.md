@@ -1547,13 +1547,123 @@ UGB lies in GHz range
 | **Accuracy of Gain** | Moderate | Lower (due to non-ideal mirror) | Better control with biasing |
 
 ---
+## Applications
+
+### Circuit 1: NMOS Differential Amplifier (Resistive Load)
+
+- Basic amplification stages  
+- Sensor signal conditioning circuits  
+- Low-frequency analog processing  
+- Educational and introductory analog designs  
+- Simple differential signal handling  
+
+---
+
+### Circuit 2: Differential Amplifier with PMOS Active Load
+
+- Operational amplifier input stages  
+- Analog front-end circuits  
+- Low-power integrated designs  
+- Gain-enhanced amplification blocks  
+- General signal processing applications  
+
+---
+
+### Circuit 3: CMOS Differential Amplifier with Bias Control
+
+- High-gain precision amplifiers  
+- Low-voltage CMOS analog systems  
+- Integrated analog building blocks  
+- Communication and RF front-end stages  
+- High-performance differential signal processing  
+
+---
+
+## Overall Results
+
+- All three amplifier configurations were designed and tested using 180 nm CMOS technology with ±0.9 V supply  
+
+- Circuit 1 (resistive load):
+  - Moderate gain (~12 dB)  
+  - Very high bandwidth (GHz range)  
+  - Limited by low output resistance  
+
+- Circuit 2 (PMOS active load):
+  - Lower gain (~5 dB in simulation)  
+  - Moderate bandwidth  
+  - Improvement due to active load but affected by mirror non-idealities  
+
+- Circuit 3 (bias-controlled CMOS):
+  - Highest gain (~30 dB theoretical, ~5 dB practical)  
+  - Reduced bandwidth due to higher gain  
+  - Better control using bias voltages  
+
+---
+## Interpretation of Results
+
+The experiment demonstrates the behavior of CMOS differential amplifiers implemented in 180 nm technology under low-voltage operation (±0.9 V).
+
+The results indicate that the voltage gain is mainly governed by transconductance (gm) and output resistance (Rout), where:
+
+Av ≈ gm × Rout  
+
+Circuits with higher effective output resistance show improved gain performance.
+
+---
 
 ### Key Observations
 
-- Circuit 1 is simple but suffers from low gain and large area  
-- Circuit 2 improves gain using active load but introduces non-idealities  
-- Circuit 3 provides highest gain and better control, at the cost of complexity  
+- A clear trade-off between gain and bandwidth is observed:
+  - Increasing gain reduces bandwidth  
+  - Lower gain results in wider bandwidth  
 
-✔ Overall:
+- Frequency response shows dominant pole behavior due to parasitic capacitances, limiting high-frequency performance  
 
-Circuit 3 offers the best performance when proper biasing is applied.
+- All MOSFETs operate in saturation region, ensuring proper amplification within the valid input range  
+
+---
+
+### Practical Limitations
+
+Deviation from theoretical results occurs due to:
+
+- Channel length modulation (finite output resistance)  
+- Parasitic capacitances affecting frequency response  
+- Mobility degradation in short-channel devices  
+- Non-ideal current sources and mirrors  
+
+These effects reduce gain and introduce bandwidth limitations.
+
+---
+
+### Design Insights
+
+- Active loads significantly improve output resistance and gain  
+- However, they introduce additional parasitics and increase design complexity  
+- Proper biasing is critical for maintaining saturation and stable operation  
+
+---
+
+### Comparative Understanding
+
+- Circuit 1:
+  - Simple implementation  
+  - Lower gain and larger area  
+
+- Circuit 2:
+  - Better integration using active load  
+  - Moderate gain improvement  
+
+- Circuit 3:
+  - Highest gain due to bias-controlled active load  
+  - More complex but offers better performance control  
+
+---
+
+### Final Insight
+
+The experiment confirms that CMOS differential amplifiers involve a balance between gain, bandwidth, and complexity.
+
+✔ Circuit 3 is best suited for high-gain applications  
+✔ Circuit 1 is useful for basic understanding and simple designs  
+✔ Circuit 2 provides a practical trade-off between the two  
