@@ -1378,7 +1378,7 @@ Vov ≈ 0.24–0.34 V → √2·Vov ≈ 0.34–0.48 V
 ![Transient Linear](your_linear_image.png.jpeg3.png)
 
 Input:
-Vid ≈ 100 mV  
+Vid ≈ 50 mV  
 
 ✔ Observation:
 
@@ -1398,7 +1398,7 @@ Amplifier operates in linear region
 ![Transient Nonlinear](your_nonlinear_image.png.jpeg3)
 
 Input:
-Vid ≈ 600 mV  
+Vid ≈ 400 mV  
 
 ✔ Observation:
 
@@ -1469,7 +1469,7 @@ Simulated gain < theoretical gain
 ---
 
 ### AC Analysis
-![AC Response](your_ac_plot.png2)
+![AC Response](your_ac_plot.png3)
 
 #### Input Conditions
 
