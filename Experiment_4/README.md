@@ -434,6 +434,7 @@ Beyond this limit:
 - Gain reduces  
 
 Thus, proper input range selection is essential for accurate amplification.
+
 ## 🔷 Gain Calculation (From Transient Analysis)
 
 The output waveform is amplified and inverted with respect to the input signal.
@@ -1326,14 +1327,9 @@ W = (2 ID L) / (μCox VOV²)
 
 ---
 
-### Summary
+##  DC Analysis
 
-- All MOSFETs operate in saturation  
-- Tail current properly maintained  
-- Bias voltages ensure stable operation  
-- Circuit ready for further analysis  
-
----
+![DC Analysis Screenshot](your_dc_image.png.jpeg3)  
 
 ### Input Common Mode Range (ICMR)
 
@@ -1364,6 +1360,7 @@ Vout(max) ≈ VDD − VOV(p) ≈ 0.35 V
 ✔ Range:
 
 −0.36 V ≤ Vout ≤ 0.35 V 
+
 ### Transient Analysis
 
 To verify linear operation, transient simulation is performed for two input cases.
@@ -1378,8 +1375,9 @@ Vov ≈ 0.24–0.34 V → √2·Vov ≈ 0.34–0.48 V
 
 #### Case 1: Small Signal (Linear Region)
 
-Input:
+![Transient Linear](your_linear_image.png.jpeg3)
 
+Input:
 Vid ≈ 100 mV  
 
 ✔ Observation:
@@ -1397,8 +1395,9 @@ Amplifier operates in linear region
 
 #### Case 2: Large Signal (Non-Linear Region)
 
-Input:
+![Transient Nonlinear](your_nonlinear_image.png.jpeg3)
 
+Input:
 Vid ≈ 600 mV  
 
 ✔ Observation:
@@ -1470,6 +1469,7 @@ Simulated gain < theoretical gain
 ---
 
 ### AC Analysis
+![AC Response](your_ac_plot.png2)
 
 #### Input Conditions
 
