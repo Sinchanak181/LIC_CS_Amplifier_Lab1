@@ -1203,7 +1203,7 @@ A CMOS differential amplifier using a PMOS current mirror and bias-controlled cu
 
 ### Circuit Diagram
 
-![Circuit 3](your_circuit3.png)
+![Circuit 3](your_circuit3.png.jpeg)
 
 ### Given Parameters
 
@@ -1329,7 +1329,7 @@ W = (2 ID L) / (μCox VOV²)
 
 ##  DC Analysis
 
-![DC Analysis Screenshot](your_dc_image.png.jpeg3)  
+![DC Analysis Screenshot](your_dc_image.png.jpeg3.png)  
 
 ### Input Common Mode Range (ICMR)
 
@@ -1375,7 +1375,7 @@ Vov ≈ 0.24–0.34 V → √2·Vov ≈ 0.34–0.48 V
 
 #### Case 1: Small Signal (Linear Region)
 
-![Transient Linear](your_linear_image.png.jpeg3)
+![Transient Linear](your_linear_image.png.jpeg3.png)
 
 Input:
 Vid ≈ 100 mV  
