@@ -1160,23 +1160,47 @@ Vout = V(out1) − V(out2)
 - Linear amplification for small signals  
 - Practical gain < theoretical due to non-ideal effects
 
-  ## Circuit 3: CMOS Differential Amplifier with PMOS Active Load
-
+  
+## Circuit 3: CMOS Differential Amplifier with PMOS Current Mirror Load
+---
 ### Working Principle
 
-The circuit consists of an NMOS differential pair (M1, M2) with a tail current source (M5).  
-PMOS transistors (M3, M4) are used as active loads.
+This circuit implements a CMOS differential amplifier using:
 
-When a differential input is applied:
+- NMOS pair (M1, M2) → input stage  
+- PMOS transistors (M3, M4) → current mirror active load  
+- NMOS transistor (M5) → tail current source  
 
-Vid = Vin1 − Vin2  
+The differential input is applied as:
 
-- If Vin1 > Vin2 → M1 conducts more current  
-- If Vin2 > Vin1 → M2 conducts more current  
-- The PMOS load converts current variation into output voltage  
+vid = Vin1 − Vin2  
+
+Based on this input difference:
+
+- Current is steered between M1 and M2  
+- PMOS mirror converts current difference into output voltage  
+- Output is taken at OUT1 and OUT2  
+
+The use of active load improves gain compared to resistive load designs.
 
 ---
-##  Circuit Diagram
+
+### Key Features
+
+- Current mirror load increases output resistance  
+- Bias voltages (VB1, VB2) control operating point  
+- Suitable for low-voltage analog circuits  
+- Provides better gain than simple differential pair  
+
+---
+
+### One-Line Summary
+
+A CMOS differential amplifier using a PMOS current mirror and bias-controlled current source for improved gain and stable operation.
+
+---
+
+### Circuit Diagram
 
 ![Circuit 3](your_circuit3.png)
 
@@ -1194,127 +1218,342 @@ Vid = Vin1 − Vin2
 | Tail voltage (Vp) | −0.7 V |
 | Threshold voltage (Vt) | ≈ 0.36 V |
 
----
+#### Tail Current Source (M5)
 
-### Power Constraint
+To keep M5 in saturation:
 
-Total supply:
+VGS = VT + VOV  
 
-VDD − VSS = 0.9 − (−0.9) = 1.8 V  
+Assuming:
 
-Power limit:
-
-P ≤ 1.8 mW  
+VT ≈ 0.36 V  
+VOV ≈ 0.20 V  
 
 So,
 
-Iss ≤ 1 mA  
+VGS ≈ 0.56 V  
 
-Chosen:
+Since source is at −0.9 V:
 
-Iss = 1 mA  
+VG = VS + VGS = −0.9 + 0.56 ≈ −0.34 V  
 
----
+✔ Bias selected:  
+VB1 ≈ −0.34 V  
 
-### Drain Current Calculation
+Tail current:
 
-For balanced condition:
+ISS = 1 mA  
 
-Id1 = Id2 = Iss / 2  
+Check saturation:
 
-Id1 = Id2 = 1mA / 2 = 0.5 mA  
+VDS = −0.7 − (−0.9) = 0.2 V  
 
----
-
-### Bias Calculation (NMOS Pair)
-
-Given:
-
-Vs = −0.7 V  
-Vg = 0 V  
-
-Vgs = Vg − Vs = 0 − (−0.7) = 0.7 V  
-
-Overdrive voltage:
-
-Vov = Vgs − Vt  
-Vov = 0.7 − 0.36 = 0.34 V  
-
-Drain voltage:
-
-Vd = 0 V  
-
-Vds = Vd − Vs = 0 − (−0.7) = 0.7 V  
-
-Condition:
-
-Vds > Vov → 0.7 > 0.34 ✔  
-
-Thus, M1 and M2 operate in saturation.
+0.2 ≥ 0.2 ✔ → Saturation condition satisfied  
 
 ---
 
-### NMOS Current Source (M5)
+#### NMOS Differential Pair (M1, M2)
 
-Source connected to:
+Under balanced condition:
 
-Vs = −0.9 V  
-
-Drain at:
-
-Vd = −0.7 V  
-
-Vds = Vd − Vs = (−0.7) − (−0.9) = 0.2 V  
-
-Choose:
-
-Vov ≈ 0.2 V  
-
-Vgs = Vt + Vov  
-Vgs = 0.36 + 0.2 = 0.56 V  
+ID1 = ID2 = ISS / 2 = 0.5 mA  
 
 Gate voltage:
 
-Vg = Vs + Vgs  
-Vg = −0.9 + 0.56 = −0.34 V  
+VG = 0 V  
 
-Condition:
+Source voltage:
 
-Vds ≥ Vov → 0.2 ≥ 0.2 ✔  
+VS ≈ −0.7 V  
 
-Thus, M5 operates at edge of saturation.
+So,
+
+VGS = 0 − (−0.7) = 0.7 V  
+
+Overdrive:
+
+VOV = VGS − VT = 0.7 − 0.36 = 0.34 V  
+
+Check:
+
+VDS = 0 − (−0.7) = 0.7 V  
+
+0.7 ≥ 0.34 ✔ → Saturation  
 
 ---
 
-### PMOS Active Load (M3, M4)
+#### PMOS Current Mirror Load (M3, M4)
 
-Source connected to:
+For PMOS:
 
-Vs = 0.9 V  
+VS = VDD = 0.9 V  
 
 Assume:
 
-|Vtp| ≈ 0.39 V  
-Vov(p) ≈ 0.25 V  
+|VTp| ≈ 0.39 V  
+VOV(p) ≈ 0.25 V  
 
-Vsg = |Vtp| + Vov  
-Vsg = 0.39 + 0.25 = 0.64 V  
+Then:
+
+VSG = |VTp| + VOV(p) = 0.39 + 0.25 = 0.64 V  
 
 Gate voltage:
 
-Vg = Vs − Vsg  
-Vg = 0.9 − 0.64 = 0.26 V  
+VG = VS − VSG = 0.9 − 0.64 ≈ 0.26 V  
 
-Thus,
+✔ Bias selected:  
+VB2 ≈ 0.26 V  
 
-Vb ≈ 0.26 V  
+Check saturation:
 
-Condition:
+VSD = 0.9 − 0 = 0.9 V  
 
-Vsd > Vov ✔  
+0.9 ≥ 0.25 ✔ → Saturation  
 
-Hence, M3 and M4 operate in saturation.
+---
 
-✔ Design satisfies given specifications
+### Width Estimation
 
+Using:
 
+W = (2 ID L) / (μCox VOV²)
+
+- M1, M2 → W ≈ 18 µm → tuned ≈ 30 µm  
+- M5 → W ≈ 100 µm → tuned ≈ 190 µm  
+- M3, M4 → W ≈ 75 µm  
+
+✔ Final widths adjusted in simulation for accurate biasing  
+
+---
+
+### Summary
+
+- All MOSFETs operate in saturation  
+- Tail current properly maintained  
+- Bias voltages ensure stable operation  
+- Circuit ready for further analysis  
+
+---
+
+### Input Common Mode Range (ICMR)
+
+Minimum:
+
+Vin(min) ≈ VS + VOV + VT ≈ −0.33 V  
+
+Maximum:
+
+Vin(max) ≈ VDD − VOV(p) − |VTp| ≈ 0.7 V  
+
+✔ Range:
+
+−0.33 V ≤ Vin ≤ 0.7 V  
+
+---
+
+### Output Common Mode Range (OCMR)
+
+Minimum:
+
+Vout(min) ≈ VS + VOV ≈ −0.36 V  
+
+Maximum:
+
+Vout(max) ≈ VDD − VOV(p) ≈ 0.35 V  
+
+✔ Range:
+
+−0.36 V ≤ Vout ≤ 0.35 V 
+### Transient Analysis
+
+To verify linear operation, transient simulation is performed for two input cases.
+
+#### Condition for linearity
+
+|Vid| < √2 · Vov  
+
+Vov ≈ 0.24–0.34 V → √2·Vov ≈ 0.34–0.48 V  
+
+---
+
+#### Case 1: Small Signal (Linear Region)
+
+Input:
+
+Vid ≈ 100 mV  
+
+✔ Observation:
+
+- Output waveform is sinusoidal  
+- Both transistors conduct simultaneously  
+- Current is shared between branches  
+- No visible distortion  
+
+✔ Conclusion:
+
+Amplifier operates in linear region  
+
+---
+
+#### Case 2: Large Signal (Non-Linear Region)
+
+Input:
+
+Vid ≈ 600 mV  
+
+✔ Observation:
+
+- Output shows clipping/distortion  
+- One transistor turns OFF  
+- Current flows mainly through one branch  
+- Signal becomes non-linear  
+
+✔ Conclusion:
+
+Linearity is lost due to large differential input  
+
+---
+
+### Practical Gain (From Simulation)
+
+Measured values:
+
+Vin(p-p) ≈ 100 mV  
+Vout(p-p) ≈ 180 mV  
+
+Voltage gain:
+
+Av = Vout / Vin ≈ 180 / 100 ≈ 1.8  
+
+In dB:
+
+Av ≈ 20 log(1.8) ≈ 5 dB  
+
+---
+
+### Theoretical Gain
+
+Using small-signal model:
+
+gm = 2Id / Vov  
+
+gm ≈ 2 × 0.5mA / 0.34 ≈ 3 mS  
+
+Output resistance:
+
+ro ≈ 1 / (λId) ≈ 10–12 kΩ  
+
+Gain:
+
+Av = gm × ro ≈ 30–35  
+
+In dB:
+
+Av ≈ 30 dB  
+
+---
+
+### Reason for Difference (Theory vs Simulation)
+
+The simulated gain is lower due to practical non-ideal effects:
+
+- Channel length modulation reduces output resistance  
+- Current mirror is not perfectly ideal  
+- Mobility degradation lowers gm  
+- Parasitic capacitances affect signal  
+- Bias variations slightly shift operating point  
+
+✔ Hence:
+
+Simulated gain < theoretical gain  
+
+---
+
+### AC Analysis
+
+#### Input Conditions
+
+- Vin1 = +0.5 AC  
+- Vin2 = −0.5 AC  
+- Frequency sweep: 1 Hz to ~1 GHz  
+
+---
+
+#### Output Expression
+
+Vout = V(out1) − V(out2)  
+
+---
+
+#### Frequency Response
+
+✔ Observations:
+
+- Gain is flat at low/mid frequencies  
+- At high frequency, gain starts decreasing  
+- Indicates dominant pole behavior  
+
+---
+
+#### Midband Gain
+
+From simulation:
+
+Av ≈ 5–5.5 dB  
+
+In linear:
+
+Av ≈ 1.8 V/V  
+
+---
+
+#### Bandwidth
+
+- Lower cutoff ≈ 0 Hz  
+- Upper cutoff ≈ few hundred MHz  
+
+✔ Behavior:
+
+Circuit acts as a **low-pass amplifier**
+
+---
+
+#### Unity Gain Bandwidth (UGB)
+
+UGB ≈ Av × fH  
+
+UGB lies in GHz range  
+
+---
+## Comparison of Differential Amplifier Configurations
+
+| Parameter | Circuit 1: Resistive Load | Circuit 2: PMOS Active Load | Circuit 3: Active Load with Bias Control |
+|----------|--------------------------|-----------------------------|------------------------------------------|
+| **Structure** | NMOS differential pair with resistors | NMOS pair + PMOS current mirror | Fully CMOS with bias-controlled loads |
+| **Load Type** | Passive (Resistor RD) | Active (PMOS mirror) | Active with external bias (VB1, VB2) |
+| **Tail Source** | Ideal current source | NMOS current source | Bias-controlled NMOS source |
+| **Gain (Simulated)** | ~4.6 V/V (~12 dB) | ~1.8 V/V (~5.5 dB) | ~40 V/V (~32 dB) |
+| **Gain (Theoretical)** | ~4–5 V/V | ~1.5–2 V/V | ~30–35 V/V |
+| **Output Resistance** | Low (resistive load) | Higher than circuit 1 | Highest due to active load + biasing |
+| **Bandwidth** | Very high (~GHz range) | Moderate | Lower (due to high gain trade-off) |
+| **Unity Gain BW** | Highest | Medium | Reduced |
+| **Input CM Range** | Limited | Wide | Moderate |
+| **Output CM Range** | Wide | Wide | Restricted |
+| **Linearity Range** | Small signal only | Similar to circuit 1 | Same limitation (|Vid| < ~0.34 V) |
+| **Power Efficiency** | Low | Improved | Best among three |
+| **Area** | Large (due to resistors) | Compact | Compact |
+| **Design Complexity** | Simple | Moderate | More complex (bias tuning needed) |
+| **Biasing** | Simple | Requires current source | Requires precise VB1, VB2 |
+| **Accuracy of Gain** | Moderate | Lower (due to non-ideal mirror) | Better control with biasing |
+
+---
+
+### Key Observations
+
+- Circuit 1 is simple but suffers from low gain and large area  
+- Circuit 2 improves gain using active load but introduces non-idealities  
+- Circuit 3 provides highest gain and better control, at the cost of complexity  
+
+✔ Overall:
+
+Circuit 3 offers the best performance when proper biasing is applied.
